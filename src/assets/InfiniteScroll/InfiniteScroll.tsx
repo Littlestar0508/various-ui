@@ -2,6 +2,7 @@ import axios from 'axios'
 import './InfiniteScroll.css'
 import { useEffect, useRef } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 
 type Picture = {
   id: string
@@ -20,6 +21,10 @@ const fecthNextPicture = async ({ pageParam }: { pageParam: number }) => {
 }
 
 function InfiniteScroll() {
+  const navigate = useNavigate()
+
+  const moveToHomePage = () => navigate('/')
+
   const sentinelRef = useRef<HTMLDivElement | null>(null)
 
   const {
@@ -65,6 +70,7 @@ function InfiniteScroll() {
   return (
     <>
       <h2>무한 스크롤</h2>
+      <button onClick={moveToHomePage}>메인 화면으로</button>
 
       <div className="grid">
         {pictureList.map((img) => (
