@@ -1,7 +1,8 @@
 import axios from 'axios'
 import './Pagination.css'
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 
 type Picture = {
   id: string
@@ -20,7 +21,12 @@ const fetchPictureList = async (page: number) => {
 }
 
 function Pagination() {
+  const navigate = useNavigate()
+
+  const moveToHomePage = () => navigate('/')
+
   const [page, setPage] = useState(1)
+  const qc = useQueryClient()
 
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['picsum', page, LIMIT],
@@ -29,12 +35,23 @@ function Pagination() {
     placeholderData: (prev) => prev,
   })
 
+  useEffect(() => {
+    if (!data) return
+
+    qc.prefetchQuery({
+      queryKey: ['picsum', page + 1, LIMIT],
+      queryFn: () => fetchPictureList(page + 1),
+      staleTime: 1000 * 30,
+    })
+  }, [data, page, qc])
+
   if (isLoading) return <p>로딩 중 ...</p>
   if (error) return <p>오류 발생</p>
 
   return (
     <>
       <h2>페이지네이션</h2>
+      <button onClick={moveToHomePage}>홈으로</button>
 
       <div className="gridPagination">
         {data?.map((img) => (

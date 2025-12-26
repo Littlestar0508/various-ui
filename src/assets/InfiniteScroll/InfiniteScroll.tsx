@@ -70,7 +70,7 @@ function InfiniteScroll() {
   return (
     <>
       <h2>무한 스크롤</h2>
-      <button onClick={moveToHomePage}>메인 화면으로</button>
+      <button onClick={moveToHomePage}>홈으로</button>
 
       <div className="gridInfiniteScroll">
         {pictureList.map((img) => (
