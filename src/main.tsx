@@ -5,6 +5,9 @@ import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import InfiniteScroll from './assets/InfiniteScroll/InfiniteScroll.tsx'
 import Home from './assets/Home/Home.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const root = document.getElementById('root')
 
@@ -12,15 +15,17 @@ if (root) {
   const reactDOMRoot = createRoot(root)
 
   reactDOMRoot.render(
-    <BrowserRouter>
-      <StrictMode>
-        <Routes>
-          <Route element={<App />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/InfiniteScroll" element={<InfiniteScroll />} />
-          </Route>
-        </Routes>
-      </StrictMode>
-    </BrowserRouter>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<App />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/InfiniteScroll" element={<InfiniteScroll />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </StrictMode>
   )
 }
