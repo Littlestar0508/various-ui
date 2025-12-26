@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import InfiniteScroll from './assets/InfiniteScroll/InfiniteScroll.tsx'
 import Home from './assets/Home/Home.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Pagination from './assets/Pagination/Pagination.tsx'
 
 const queryClient = new QueryClient()
 
@@ -22,6 +23,7 @@ if (root) {
             <Route element={<App />}>
               <Route path="/" element={<Home />} />
               <Route path="/InfiniteScroll" element={<InfiniteScroll />} />
+              <Route path="/Pagination" element={<Pagination />} />
             </Route>
           </Routes>
         </BrowserRouter>

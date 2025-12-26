@@ -5,10 +5,12 @@ function Home() {
   const navigation = useNavigate()
 
   const moveToInfiniteScrollPage = () => navigation('/InfiniteScroll')
+  const moveToPaginationPage = () => navigation('/Pagination')
 
   return (
     <>
       <button onClick={moveToInfiniteScrollPage}>무한 스크롤 UI</button>
+      <button onClick={moveToPaginationPage}>페이지네이션 UI</button>
     </>
   )
 }
