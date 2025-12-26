@@ -1,0 +1,16 @@
+.gridPagination {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.gridPagination figure {
+  margin: 0;
+}
+
+.gridPagination img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}

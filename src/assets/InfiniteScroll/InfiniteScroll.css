@@ -1,14 +1,14 @@
-.grid {
+.gridInfiniteScroll {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
 }
 
-.grid figure {
+.gridInfiniteScroll figure {
   margin: 0;
 }
 
-.grid img {
+.gridInfiniteScroll img {
   width: 100%;
   height: auto;
   display: block;
