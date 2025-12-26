@@ -46,7 +46,7 @@ function InfiniteScroll() {
   }, [page, loading])
 
   return (
-    <div className="page">
+    <>
       <h2>무한 스크롤</h2>
 
       <div className="grid">
@@ -64,7 +64,7 @@ function InfiniteScroll() {
 
       <div ref={sentinelRef} style={{ height: 1 }} />
       {loading && <p>불러오는 중...</p>}
-    </div>
+    </>
   )
 }
 
