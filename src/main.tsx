@@ -7,7 +7,7 @@ import InfiniteScroll from './assets/InfiniteScroll/InfiniteScroll.tsx'
 import Home from './assets/Home/Home.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Pagination from './assets/Pagination/Pagination.tsx'
-import ChartJS from './assets/ChartJS/ChartJS.tsx'
+import ChartJs from './assets/ChartJS/ChartJS.tsx'
 
 const queryClient = new QueryClient()
 
@@ -25,7 +25,7 @@ if (root) {
               <Route path="/" element={<Home />} />
               <Route path="/InfiniteScroll" element={<InfiniteScroll />} />
               <Route path="/Pagination" element={<Pagination />} />
-              <Route path="/ChartJS" element={<ChartJS />} />
+              <Route path="/ChartJS" element={<ChartJs />} />
             </Route>
           </Routes>
         </BrowserRouter>
